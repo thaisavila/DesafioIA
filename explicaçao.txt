@@ -1,0 +1,147 @@
+Pra abrir o ambiente virtual, caso saia:
+Terminal: .\venv\Scripts\activate
+
+......Resumo.......
+Criar venv: -m venv nome_do_ambiente 
+Ativar venv: nome_do_ambiente\Scripts\activate
+Pandas e scikit-learn: pip install pandas scikit-learn
+
+Imports:
+import pandas as pd
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier #KNN
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+Chamar o Dataset
+iris = datasets.load_iris() 
+
+Declarar x e y:
+x = iris.data - dados
+y = iris.target - respostas
+
+Separar variaveis de treino e teste:
+x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=0.3, random_state=1 )
+
+Definir o modelo e colocar ele pra aprender:
+(Nesse caso usei o KNN)
+modelo = KNeighborsClassifier(n_neighbors=3)
+modelo.fit(x_train, y_train)
+
+Fazer as predições:
+y_pred = modelo.predict(x_test)
+
+Métricas pra ver se o modelo deu certo:
+acuracia = (accuracy_score(y_test, y_pred))*100
+
+print(f"Acurácia: {acuracia:.2f}")
+print("\nMatriz de Confusão:\n", confusion_matrix(y_test, y_pred)) 
+print("\nRelatório de Classificação:\n", classification_report(y_test, y_pred))
+
+
+
+...BIBLIOTECAS:
+1. scikit-learn:
+.scikit-learn é uma biblioteca de python pra treinar ia
+
+. Nela tem varios datasets (que é um conjunto de dados) que eu posso usar pra treinar as ias que eu criar. Um desses datasets é o iris, que é o que eu vou usar pra responder a minha questão
+
+.Chamo ela no python com: 
+import sklearn
+
+.Mas como eu não quero usar toda ela só quero usar o Dataset Iris eu faço isso:
+Terminal: pip install scikit-learn
+Python: from sklearn import datasets
+
+2. PANDAS
+Serve pra organizar os dados do dataset iris em tabelas, como chama:
+Terminal: pip install pandas
+Python: import pandas as pd
+
+3. NUMPY
+Biblioteca que serve pra fazer calculos matemáticos e criar matrizes, o próprio usa isso
+Terminal: pip install numpy
+Python: import numpy as np
+
+
+
+Toda vez que fechar o terminal tem que por: 
+source .venv/Scripts/activate
+Pra ativar o venv de novo
+
+...DEPOIS DE CRIAR AS BIBLIOTECAS É NECESSÁRIO ENTENDER OS DADOS
+# Ver descrição completa do dataset (em inglês, mas super detalhado)
+print(iris.DESCR)
+
+# Ver as chaves que existem dentro do objeto iris
+print(iris.keys())
+
+# Ver os dados (atributos medidos das flores)
+print(iris.data)
+
+# Ver os nomes dos atributos (colunas)
+print(iris.feature_names)
+
+# Ver os rótulos numéricos (0, 1, 2) correspondentes às classes
+print(iris.target)
+
+# Ver o nome das classes (Setosa, Versicolor, Virginica)
+print(iris.target_names)
+
+... SEPARAR OS DADOS ENTRE TREINO E TESTE
+Treino: dados pro computador aprender
+Teste: Dados pra testar se o computador aprendeu
+
+.Pode usar a função train_test_split
+Python: from sklearn.model_selection import train_test_split
+Terminal: pip install scikit-learn (Mas só se já não tiver baixado, nesse caso já baixou)
+
+.Código:
+
+x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=0.3, random_state=42 )
+
+Declara 4 variaveis, tem que ser na ordem: dados de treino, dados de teste, resposta de treino, resposta de teste
+test_size=0.3 - significa que 30% vai ser pro teste. 
+Também pode ser: train_size=0.7
+A proporção 70/30 é a mais utilizada mas pode ser outras, como 75/25 ou 80/20
+
+...ESCOLHER MODELO 
+O knn e arvore são mais simples para aprender, mas tem outros como o svg que é mais complexo, mas é melhor pra problemas maiores
+
+. knn
+Python:
+importar: from sklearn.neighbors import KNeighborsClassifier
+código:
+modelo = KNeighborsClassifier(n_neighbors=4)
+modelo.fit(x_train, y_train)
+
+Sendo: 
+modelo uma variavel que pode ter qualquer nome
+n_neighbors=4 - a quantidade de vizinhos que ele vai olhar
+fit - a variavel que faz ele aprender com os a parte do treino que eu já tinha separado
+
+... testarCoocar o computador pra testar se ele acerta 
+Python: y_pred = modelo.predict(x_test)
+Sendo:
+y_pred - variavel pred=predições
+modelo - uma referencia a última variavel que tinha criado
+.predict() - função que faz o computador fazer os test_size
+x_test - os dados que o computador não conhece
+
+... CALCULAR MÉTRICAS DE DESEMPENHO DO CÓDIGO
+.ACURACIA
+acertos/total
+
+.PRECISÃO
+A porcentagem que equivale a possibilidade do computador acertar a previsão dele
+VP/(VP/VF)
+É por classes, como se fosse a acuracia da classe
+Ex: De tudo o que o computador disse que é essa classe, quantas realmente são dessa classe?
+VP = Verdadeiros Positivos (acertos para essa classe)
+FP = Falsos Positivos (quando o modelo previu essa classe, mas era outra)
+
+.RECALL(sensibilidade)
+O quanto ele acertou de cada flor
+
+.F1-SCORE
+Média da precisão e RECALL

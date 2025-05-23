@@ -1,0 +1,55 @@
+🔹 O que é Classe?
+➡️ Uma classe é como uma forma, molde ou modelo de algo.
+Ela descreve como esse algo deve ser: quais características ele tem e o que ele pode fazer.
+
+🧠 Exemplo:
+
+"Flor" pode ser uma classe.
+
+Ela descreve que uma flor tem características como: tamanho da pétala, tamanho da sépala, cor, espécie...
+
+🔹 O que é Instância?
+➡️ Uma instância é um exemplo real daquela classe, preenchido com informações concretas.
+
+🧠 Exemplo:
+
+Uma flor específica com 5 cm de pétala, 3 cm de sépala, da espécie Setosa → isso é uma instância da classe "Flor".
+
+👉 O dataset Iris tem 150 instâncias de flores diferentes, cada uma com medidas reais.
+
+🔹 O que são Atributos?
+➡️ Atributos são as características que descrevem a instância.
+
+🧠 No Iris:
+Os atributos são:
+
+sepal length (cm) → comprimento da sépala
+
+sepal width (cm) → largura da sépala
+
+petal length (cm) → comprimento da pétala
+
+petal width (cm) → largura da pétala
+
+Cada flor (instância) tem esses 4 atributos, com valores específicos.
+
+🌸 De forma visual no dataset Iris:
+sepal length	sepal width	petal length	petal width	species (target)
+5.1	3.5	1.4	0.2	0 (Setosa)
+4.9	3.0	1.4	0.2	0 (Setosa)
+...	...	...	...	...
+
+Cada linha → uma instância (uma flor específica)
+
+As colunas → atributos (características da flor)
+
+O "species"/"target" → a classe que aquela flor pertence (Setosa, Versicolor ou Virginica)
+
+🔥 Relacionando com o iris.DESCR:
+Quando lá na descrição aparece:
+
+"150 instâncias" → 150 flores medidas
+
+"4 atributos" → as 4 características medidas (sépala e pétala)
+
+"3 classes" → os 3 tipos de flor (Setosa, Versicolor e Virginica)
